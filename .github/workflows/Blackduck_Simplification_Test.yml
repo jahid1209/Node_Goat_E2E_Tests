@@ -1,47 +1,47 @@
-name: Blackduck Simplification Test
-on:
-  push:
-    branches: [ main, master, develop, stage, release ]
-  pull_request:
-    branches: [ main, master, develop, stage, release ]
-  workflow_dispatch:  
-jobs:
-  build:
-    #runs-on: [ mac-sh ]
-    runs-on: [ ubuntu-latest ]
-    steps:
-      - name: Checkout Source
-        uses: actions/checkout@v3
-      - name: Black Duck Full Scan
-        uses: synopsys-sig/synopsys-action@v1.9.0
-        ### Use below configuration to set specific detect environment variables
-        env:
-          DETECT_PROJECT_NAME: ${{ github.event.repository.name }}
-          #DETECT_EXCLUDED_DIRECTORIES: /Users/madhusud/PI_3_2023/Local_Anlaysis_Testing_INTDELIVER-169/Github_Runners/actions-runner/_work/Node_Goat_E2E/Node_Goat_E2E/config, /Users/madhusud/PI_3_2023/Local_Anlaysis_Testing_INTDELIVER-169/Github_Runners/actions-runner/_work/Node_Goat_E2E/Node_Goat_E2E/app
-          #DETECT_BLACKDUCK_RAPID_COMPARE_MODE: BOM_COMPARE
+# name: Blackduck Simplification Test
+# on:
+#   push:
+#     branches: [ main, master, develop, stage, release ]
+#   pull_request:
+#     branches: [ main, master, develop, stage, release ]
+#   workflow_dispatch:  
+# jobs:
+#   build:
+#     #runs-on: [ mac-sh ]
+#     runs-on: [ ubuntu-latest ]
+#     steps:
+#       - name: Checkout Source
+#         uses: actions/checkout@v3
+#       - name: Black Duck Full Scan
+#         uses: synopsys-sig/synopsys-action@v1.9.0
+#         ### Use below configuration to set specific detect environment variables
+#         env:
+#           DETECT_PROJECT_NAME: ${{ github.event.repository.name }}
+#           #DETECT_EXCLUDED_DIRECTORIES: /Users/madhusud/PI_3_2023/Local_Anlaysis_Testing_INTDELIVER-169/Github_Runners/actions-runner/_work/Node_Goat_E2E/Node_Goat_E2E/config, /Users/madhusud/PI_3_2023/Local_Anlaysis_Testing_INTDELIVER-169/Github_Runners/actions-runner/_work/Node_Goat_E2E/Node_Goat_E2E/app
+#           #DETECT_BLACKDUCK_RAPID_COMPARE_MODE: BOM_COMPARE
         
-        with:
-          ### SCANNING: Required fields
-          blackduck_url: ${{ vars.BLACKDUCK_URL }}
-          blackduck_token: ${{ secrets.BLACKDUCK_API_TOKEN }}
-          #blackduck_scan_full: true
+#         with:
+#           ### SCANNING: Required fields
+#           blackduck_url: ${{ vars.BLACKDUCK_URL }}
+#           blackduck_token: ${{ secrets.BLACKDUCK_API_TOKEN }}
+#           #blackduck_scan_full: true
          
-          ### SCANNING: Optional fields
-          # blackduck_scan_failure_severities: 'BLOCKER,CRITICAL'
+#           ### SCANNING: Optional fields
+#           # blackduck_scan_failure_severities: 'BLOCKER,CRITICAL'
           
-          ### FIX PULL REQUEST CREATION: Uncomment below to enable
-          blackduck_fixpr_enabled: true
-          github_token: ${{ secrets.GIT_PAT_TOKEN }} # Required when Fix PRs is enabled
+#           ### FIX PULL REQUEST CREATION: Uncomment below to enable
+#           blackduck_fixpr_enabled: true
+#           github_token: ${{ secrets.GIT_PAT_TOKEN }} # Required when Fix PRs is enabled
           
-          ### PULL REQUEST COMMENTS: Uncomment below to enable
-          blackduck_prcomment_enabled: true 
-          #github_token: # Required when PR comments is enabled
-          #github_token: ${{ secrets.GIT_INVALID_TOKEN }} 
+#           ### PULL REQUEST COMMENTS: Uncomment below to enable
+#           blackduck_prcomment_enabled: true 
+#           #github_token: # Required when PR comments is enabled
+#           #github_token: ${{ secrets.GIT_INVALID_TOKEN }} 
 
-          ### SARIF report generation and upload to GitHub Adavanced Security: Uncomment below to enable
-          blackduck_reports_sarif_create: true # Create Black Duck SARIF report and upload it as artifact
-          blackduck_upload_sarif_report: true  # Upload Black Duck SARIF report in GitHub Advanced Security tab
-          # github_token: ${{ secrets.GITHUB_TOKEN }} # Required when blackduck_upload_sarif_report is set as true
-          #blackduck_reports_sarif_file_path: '/Users/madhusud/Github_Repos/Custom_Sarif_Path/BD_Sarif.json'
+#           ### SARIF report generation and upload to GitHub Adavanced Security: Uncomment below to enable
+#           blackduck_reports_sarif_create: true # Create Black Duck SARIF report and upload it as artifact
+#           blackduck_upload_sarif_report: true  # Upload Black Duck SARIF report in GitHub Advanced Security tab
+#           # github_token: ${{ secrets.GITHUB_TOKEN }} # Required when blackduck_upload_sarif_report is set as true
+#           #blackduck_reports_sarif_file_path: '/Users/madhusud/Github_Repos/Custom_Sarif_Path/BD_Sarif.json'
         
 
