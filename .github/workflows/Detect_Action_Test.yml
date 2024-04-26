@@ -26,7 +26,7 @@ jobs:
           # DETECT_POLICY_CHECK_FAIL_ON_SEVERITIES: BLOCKER,CRITICAL,MAJOR
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        detect-version: 8.2.0
+        detect-version: 9.3.0
         blackduck-url: ${{ secrets.BLACKDUCK_URL }}
         blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
         # scan-mode: RAPID
