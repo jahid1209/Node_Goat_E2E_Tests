@@ -1,39 +1,39 @@
-name: Polaris Simplification Test
-on:
-  push:
-    branches: [ main, master, develop, stage, release ]
-  pull_request:
-    branches: [ main, master, develop, stage, release ]  
-  workflow_dispatch:  
-jobs:
-  build:
-    runs-on: [ mac-sh ]
-    steps:
-      - name: Checkout Source
-        uses: actions/checkout@v3
+# name: Polaris Simplification Test
+# on:
+#   push:
+#     branches: [ main, master, develop, stage, release ]
+#   pull_request:
+#     branches: [ main, master, develop, stage, release ]  
+#   workflow_dispatch:  
+# jobs:
+#   build:
+#     runs-on: [ mac-sh ]
+#     steps:
+#       - name: Checkout Source
+#         uses: actions/checkout@v3
         
-      - name: Polaris Scan
-        uses: synopsys-sig/synopsys-action@v1.9.0
-        with:
-          polaris_server_url: ${{ vars.POLARIS_SERVER_URL }}
-          polaris_access_token: ${{ secrets.POLARIS_ACCESSTOKEN }}
-          #polaris_application_name: "Integrations_E2E_Test_Application"
-          #polaris_project_name: "Project_Github_Actions"
-          ### Accepts Multiple Values
-          polaris_assessment_types: "SAST,SCA"
-          ### Uncomment below configuration if Synopsys Bridge diagnostic files needs to be uploaded
-          #include_diagnostics: true
-          #polaris_triage: NOT_ENTITLED
-          #polaris_branch_name: "github-actions"
+#       - name: Polaris Scan
+#         uses: synopsys-sig/synopsys-action@v1.9.0
+#         with:
+#           polaris_server_url: ${{ vars.POLARIS_SERVER_URL }}
+#           polaris_access_token: ${{ secrets.POLARIS_ACCESSTOKEN }}
+#           #polaris_application_name: "Integrations_E2E_Test_Application"
+#           #polaris_project_name: "Project_Github_Actions"
+#           ### Accepts Multiple Values
+#           polaris_assessment_types: "SAST,SCA"
+#           ### Uncomment below configuration if Synopsys Bridge diagnostic files needs to be uploaded
+#           #include_diagnostics: true
+#           #polaris_triage: NOT_ENTITLED
+#           #polaris_branch_name: "github-actions"
 
-          ### PULL REQUEST COMMENTS: Uncomment below to enable
-          polaris_prComment_enabled: true 
-          github_token: ${{ secrets.GIT_PAT_TOKEN }} # Required when PR comments is enabled
-          #github_token: ${{ secrets.GIT_INVALID_TOKEN }}
+#           ### PULL REQUEST COMMENTS: Uncomment below to enable
+#           polaris_prComment_enabled: true 
+#           github_token: ${{ secrets.GIT_PAT_TOKEN }} # Required when PR comments is enabled
+#           #github_token: ${{ secrets.GIT_INVALID_TOKEN }}
           
-          ### SARIF report parameters
-          polaris_reports_sarif_create: true
-          polaris_upload_sarif_report: true
-          polaris_reports_sarif_file_path: '/Users/madhusud/Github_Repos/Custom_Sarif_Path/Polaris_Sarif_Report'
+#           ### SARIF report parameters
+#           polaris_reports_sarif_create: true
+#           polaris_upload_sarif_report: true
+#           polaris_reports_sarif_file_path: '/Users/madhusud/Github_Repos/Custom_Sarif_Path/Polaris_Sarif_Report'
 
 
