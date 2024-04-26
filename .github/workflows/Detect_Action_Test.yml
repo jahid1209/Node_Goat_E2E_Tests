@@ -1,0 +1,23 @@
+name: Detect-Action-Test
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on:  [ self-hosted ]
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+      - name: Detect Action
+        uses: synopsys-sig/detect-action@SIGINT-119
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          detect-version: 8.2.0
+          blackduck-url: ${{ secrets.BLACKDUCK_URL }}
+          blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
+          fail-on-all-policy-severities: false
+          detect-trust-cert: true
