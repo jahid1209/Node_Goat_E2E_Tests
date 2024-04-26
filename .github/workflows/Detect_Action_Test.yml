@@ -12,18 +12,9 @@ jobs:
  
     steps:
     - name: Checkout Source
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
     - name: Run Synopsys Detect
       uses: synopsys-sig/detect-action@SIGINT-119
-      # env:
-      #     DETECT_PROJECT_NAME: ${{ github.event.repository.name }}
-      #     DETECT_VERSION: 8.2.0
-      #     DETECT_PROJECT_CODELOCATION_UNMAP: true
-      #     DETECT_TOOLS_EXCLUDED: SIGNATURE_SCAN
-      #     DETECT_WAIT_FOR_RESULTS: true
-      #     DETECT_TIMEOUT: 3600  
-      #     DETECT_CLEANUP: false
-          # DETECT_POLICY_CHECK_FAIL_ON_SEVERITIES: BLOCKER,CRITICAL,MAJOR
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         detect-version: 9.3.0
