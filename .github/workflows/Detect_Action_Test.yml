@@ -1,5 +1,4 @@
-name: Detect-action
- 
+name: Detect-action 
 on:
   push:
     branches: [ main, master, develop, stage, release ]
